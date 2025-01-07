@@ -75,6 +75,7 @@ export class AddPage implements OnInit, AfterViewInit {
       onChange: input => {
         this.selectedInputElem.value = input;
         this.validate();
+        
       },
       onKeyPress: button => {
         this.handleLayoutChange(button);
@@ -85,19 +86,25 @@ export class AddPage implements OnInit, AfterViewInit {
           'q w e r t z u i o p ü',
           'a s d f g h j k l ö ä',
           '{shift} y x c v b n m {shift}',
-          '{alt} {space} . {bksp}'
+          '{alt} {smileys} {space} . {bksp}'
         ],
         shift: [
           'Q W E R T Z U I O P Ü',
           'A S D F G H J K L Ö Ä',
           '{shiftactivated} Y X C V B N M {shift}',
-          '{alt} {space} . {bksp}'
+          '{alt} {smileys} {space} . {bksp}'
         ],
         alt: [
           '1 2 3 4 5 6 7 8 9 0 =',
           `% @ # $ & * / ( ) ' "`,
           '{shift} , - + ; : ! ? {shift}',
-          '{default} {space} . {bksp}'
+          '{default} {smileys} {space} . {bksp}'
+        ],
+        smileys: [
+          '\uD83D\uDE03 \uD83D\uDE04 \uD83D\uDE05 \uD83D\uDE06 \uD83D\uDE07 \uD83D\uDE08 \uD83D\uDE09 \uD83D\uDE0a \uD83D\uDE0b \uD83D\uDE0c \uD83D\uDE0d',
+          `\uD83D\uDE0e \uD83D\uDE0f \uD83D\uDE10 \uD83D\uDE11 \uD83D\uDE12 \uD83D\uDE13 \uD83D\uDE14 \uD83D\uDE15 \uD83D\uDE16 \uD83D\uDE17 \uD83D\uDE18`,
+          '{shift} \uD83D\uDE19 \uD83D\uDE1a \uD83D\uDE1b \uD83D\uDE1c \uD83D\uDE1d \uD83D\uDE1e \uD83D\uDE1f {shift}',
+          '{alt} {default} {space} . {bksp}'
         ]
       },
       display: {
@@ -105,7 +112,7 @@ export class AddPage implements OnInit, AfterViewInit {
         '{smileys}': '\uD83D\uDE03',
         '{shift}': '⇧',
         '{shiftactivated}': '⇧',
-        '{enter}': '⮐ ',
+        '{enter}': '⮝ ',
         '{bksp}': '⌫',
         '{altright}': '123',
         '{downkeyboard}': '🞃',
