@@ -38,15 +38,16 @@ export class PlayerPage implements OnInit {
   ionViewWillEnter() {
     if (this.media) {
       this.playerService.sendCmd(PlayerCmds.CLEARQUEUE);
+      this.playerService.sendCmd(PlayerCmds.ISOLATE);
 
       window.setTimeout(() => {
         this.playerService.playMedia(this.media);
-      }, 1000);
+      }, 600);
     }
   }
 
   ionViewWillLeave() {
-    this.playerService.sendCmd(PlayerCmds.PAUSE);
+   // this.playerService.sendCmd(PlayerCmds.PAUSE);
   }
 
   volUp() {
