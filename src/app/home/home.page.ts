@@ -56,7 +56,7 @@ export class HomePage implements OnInit {
       this.media = media;
 
       this.media.forEach(currentMedia => {
-        this.artworkService.getArtwork(currentMedia).subscribe(url => {
+         this.artworkService.getArtwork(currentMedia).subscribe(url => {
           this.covers[currentMedia.title] = url;
         });
       });
@@ -110,7 +110,7 @@ export class HomePage implements OnInit {
     this.update();
   }
 
-  update() {
+  update(){
     if (this.category === 'audiobook' || this.category === 'music') {
       this.mediaService.publishArtists();
     } else {
@@ -135,7 +135,7 @@ export class HomePage implements OnInit {
 
   artistNameClicked(clickedArtist: Artist) {
     this.playerService.getConfig().subscribe(config => {
-      if (config.tts == null || config.tts.enabled === true) {
+      if (config.tts == null ||config.tts.enabled === true) {
         this.playerService.say(clickedArtist.name);
       }
     });
@@ -152,7 +152,7 @@ export class HomePage implements OnInit {
 
   mediaNameClicked(clickedMedia: Media) {
     this.playerService.getConfig().subscribe(config => {
-      if (config.tts == null || config.tts.enabled === true) {
+      if (config.tts == null ||config.tts.enabled === true) {
         this.playerService.say(clickedMedia.title);
       }
     });

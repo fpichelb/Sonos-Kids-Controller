@@ -17,11 +17,18 @@ export class ArtworkService {
 
     if (media.type === 'spotify' && !media.cover) {
       artwork = this.spotifyService.getAlbumArtwork(media.artist, media.title);
-    } else {
+    } else if(media.type==="tunein" && !media.cover){
+
+      const tuneincover = "https://cdn-profiles.tunein.com/"+media.id+"/images/logod.png";
       artwork = new Observable((observer) => {
-        observer.next(media.cover);
-      });
-    }
+          observer.next(tuneincover);
+        });
+    }else{
+      artwork = new Observable((observer) => {
+          observer.next(media.cover);
+        });
+      }
+    
 
     return artwork;
   }
