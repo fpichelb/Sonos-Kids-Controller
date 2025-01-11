@@ -116,10 +116,14 @@ export class MediaService {
       mergeMap(items => from(items)), // seperate arrays to single observables
       mergeAll(), // merge everything together
       toArray(), // convert to array
-      map(media => { // add dummy image for missing covers
+      map(media => { // add dummy image for missing covers or tuneIn Covers for missing cover links by id
         return media.map(currentMedia => {
           if (!currentMedia.cover) {
-            currentMedia.cover = '../assets/images/nocover.png';
+            if(currentMedia.type === "tunein"){
+              currentMedia.cover = "https://cdn-profiles.tunein.com/s"+currentMedia.id+"/images/logod.png";
+            }else {
+              currentMedia.cover = '../assets/images/nocover.png';
+            }
           }
           return currentMedia;
         });

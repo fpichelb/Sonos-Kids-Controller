@@ -15,18 +15,24 @@ export class ArtworkService {
   getArtwork(media: Media): Observable<string> {
     let artwork: Observable<string>;
 
-    if (media.type === 'spotify' && !media.cover) {
-      artwork = this.spotifyService.getAlbumArtwork(media.artist, media.title);
-    } else if(media.type==="tunein" && !media.cover){
+    if(!media.cover){
+      if (media.type === 'spotify'){
+        artwork = this.spotifyService.getAlbumArtwork(media.artist, media.title);
+      }else if(media.type === 'tunein'){
 
-      const tuneincover = "https://cdn-profiles.tunein.com/"+media.id+"/images/logod.png";
+      
+        let tuneincover = "https://cdn-profiles.tunein.com/s"+media.id+"/images/logod.png";
+        artwork = new Observable((observer) => {
+            observer.next(media.cover);
+            
+         });
+         
+        }
+      }else{
       artwork = new Observable((observer) => {
-          observer.next(tuneincover);
-        });
-    }else{
-      artwork = new Observable((observer) => {
-          observer.next(media.cover);
-        });
+        observer.next(media.cover);
+         
+      });
       }
     
 
